@@ -16,7 +16,7 @@ jobs:
     - uses: actions/checkout@v4
     - name: Build the Docker image
     - name: Build and push Docker image
-    - run: |
+      run: |
           IMAGE_TAG=$(date +%s)
           docker build . --file Dockerfile --tag delaroth/docker-flask:$IMAGE_TAG
           docker push delaroth/docker-flask:$IMAGE_TAG
