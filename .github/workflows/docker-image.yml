@@ -7,17 +7,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-    - name: Build and push Docker image
-      run: |
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Log in to Docker Hub
+        uses: docker/login-action@v3 # Use the official Docker login action
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }} # Use repository secrets
+          password: ${{ secrets.DOCKERHUB_TOKEN }}   # Use repository secrets
+
+      - name: Build and push Docker image
+        run: |
           IMAGE_TAG=$(date +%s)
-          docker build . --file Dockerfile --tag delaroth/docker-flask:$IMAGE_TAG
+          # Optional: Add a 'latest' tag as well
+          docker build . --file Dockerfile --tag delaroth/docker-flask:$IMAGE_TAG --tag delaroth/docker-flask:latest
           docker push delaroth/docker-flask:$IMAGE_TAG
-      
+          docker push delaroth/docker-flask:latest # Push the 'latest' tag too
