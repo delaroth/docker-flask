@@ -15,5 +15,9 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag delaroth/docker-flask:$(date +%s) | docker push delaroth/docker-flask:$(date +%s)
-
+    - name: Build and push Docker image
+    - run: |
+          IMAGE_TAG=$(date +%s)
+          docker build . --file Dockerfile --tag delaroth/docker-flask:$IMAGE_TAG
+          docker push delaroth/docker-flask:$IMAGE_TAG
+      
