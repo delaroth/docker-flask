@@ -21,7 +21,7 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE_TAG=$(date +%y%m%d%H%M%S)
+          IMAGE_TAG=$(date +%y + %m + %d + %H +%M +%S)
           # Optional: Add a 'latest' tag as well
           docker build . --file Dockerfile --tag delaroth/docker-flask:$IMAGE_TAG --tag delaroth/docker-flask:latest
           docker push delaroth/docker-flask:$IMAGE_TAG
