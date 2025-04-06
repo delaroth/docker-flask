@@ -11,6 +11,7 @@ pipeline {
         stage('docker build'){
              steps{
           sh 'docker build -t delaroth/new-image .'
+          docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image $DOCKERHUB_USER/$IMAGE_NAME
           sh 'docker login -u delaroth -p livevil123'
           sh 'docker push delaroth/new-image'
 }
