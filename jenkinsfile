@@ -10,7 +10,8 @@ pipeline {
         }
         stage('docker build'){
              steps{
-          sh 'docker build localhost:8081/new-image:2'
+          sh 'docker tag new-image:2'
+          sh 'docker build new-mage:2'
          // sh 'docker push new-image:2'
 }
     }
