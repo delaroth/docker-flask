@@ -10,8 +10,8 @@ pipeline {
         }
         stage('docker build'){
              steps{
-          sh 'docker tag new-image:2'
-          sh 'docker build new-mage:2'
+          sh 'docker tag latest new-image'
+          sh 'docker build new-mage'
          // sh 'docker push new-image:2'
 }
     }
