@@ -12,7 +12,7 @@ pipeline {
              steps{
           sh 'docker build -t delaroth/image-from-pipeline .'
           sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image delaroth/image-from-pipeline'
-          sh 'docker login -u delaroth -p $DOCKER_PASSWORD'
+          sh 'docker login -u delaroth -p livevil123'
           sh 'docker push delaroth/image-from-pipeline'
 }
     }
