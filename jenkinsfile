@@ -10,7 +10,7 @@ pipeline {
         }
         stage('docker build'){
              steps{
-          sh 'docker build delaroth/new-image:2'
+          sh 'docker build localhost:8080/delaroth/new-image:2'
          // sh 'docker push delaroth/new-image:2'
 }
     }
