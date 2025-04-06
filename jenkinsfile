@@ -6,6 +6,10 @@ pipeline {
             steps {
                 echo 'hi shahar'
             }
+
         }
+        stage('docker build'){
+         sh 'docker build delaroth/new-image:2'
+         sh 'docker push delaroth/new-image:2'
     }
 }
