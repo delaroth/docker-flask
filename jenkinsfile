@@ -11,9 +11,9 @@ pipeline {
         stage('docker build'){
              steps{
           sh 'docker build -t delaroth/image-from-pipeline .'
-          sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image $DOCKER_USERNAME/image-from-pipeline'
-          sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
-          sh 'docker push delaroth/image-from-pipeline'
+          sh 'docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy image $DOCKERHUB_USERNAME/image-from-pipeline'
+          sh 'docker login -u $DOCKERHUB_USERNAME -p $DOCKER_PASSWORD'
+          sh 'docker push $DOCKERHUB_USERNAME/image-from-pipeline'
 }
     }
 }
