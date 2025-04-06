@@ -10,15 +10,8 @@ pipeline {
         }
         stage('docker build'){
              steps{
-          sh 'docker run -d \
-  --name jenkins \
-  -p 8080:8080 \
-  -p 50000:50000 \
-  -v jenkins_home:/var/jenkins_home \
-  -v /var/run/docker.sock:/var/run/docker.sock \
-  jenkins/jenkins:lts'
           sh 'docker tag latest new-image'
-          sh 'docker build new-mage'
+          sh 'docker build new-image'
          // sh 'docker push new-image:2'
 }
     }
