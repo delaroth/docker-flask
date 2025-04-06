@@ -11,7 +11,7 @@ pipeline {
         stage('docker build'){
              steps{
           sh 'docker build -t delaroth/new-image .'
-          sh 'docker login -u $DOCKERHUB_USER -p livevil123'
+          sh 'docker login -u delaroth -p livevil123'
           sh 'docker push delaroth/new-image'
 }
     }
